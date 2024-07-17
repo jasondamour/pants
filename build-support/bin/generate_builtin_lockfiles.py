@@ -48,6 +48,7 @@ from pants.backend.python.subsystems.python_tool_base import PythonToolRequireme
 from pants.backend.python.subsystems.setuptools import Setuptools
 from pants.backend.python.subsystems.setuptools_scm import SetuptoolsSCM
 from pants.backend.python.subsystems.twine import TwineSubsystem
+from pants.backend.python.subsystems.uv import Uv
 from pants.backend.python.typecheck.mypy.subsystem import MyPy
 from pants.backend.python.typecheck.pytype.subsystem import Pytype
 from pants.backend.scala.lint.scalafmt.subsystem import ScalafmtSubsystem
@@ -65,7 +66,7 @@ from pants.util.dirutil import touch
 logger = logging.getLogger(__name__)
 
 
-default_python_interpreter_constraints = "CPython>=3.7,<4"
+default_python_interpreter_constraints = "CPython>=3.8,<4"
 
 
 ToolBaseT = TypeVar("ToolBaseT")
@@ -105,6 +106,7 @@ all_python_tools = tuple(
             PythonTool(
                 AddTrailingComma, "pants.backend.experimental.python.lint.add_trailing_comma"
             ),
+            PythonTool(Uv, "pants.backend.python"),
             PythonTool(Autoflake, "pants.backend.python.lint.autoflake"),
             PythonTool(Bandit, "pants.backend.python.lint.bandit"),
             PythonTool(Black, "pants.backend.python.lint.black"),
