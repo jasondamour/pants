@@ -9,7 +9,7 @@ from pants.engine.rules import collect_rules
 from pants.option.option_types import ArgsListOption
 
 
-class Uv(PythonToolBase):
+class UvSubsystem(PythonToolBase):
     options_scope = "uv"
     name = options_scope
     help_short = "uv (https://github.com/astral-sh/uv)"
